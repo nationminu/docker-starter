@@ -1,4 +1,4 @@
-# Dokcer Starter 따라하기
+# Docker Starter 따라하기
 =============
 
 ## 1. docker image build
