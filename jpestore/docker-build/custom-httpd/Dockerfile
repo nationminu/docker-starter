@@ -7,12 +7,14 @@ RUN set -ex \
 	&& cd /usr/local/apache2/conf \
 	&& if [ -f httpd.conf ]; then \
 		echo '' >> httpd.conf; \
-		echo '## Proxy Configuration ' >> httpd.conf; \ 
- 		echo 'Include conf/extra/proxy.conf' >> httpd.conf; \
+		echo '## add external Configuration ' >> httpd.conf; \ 
+ 		echo 'Include conf.d/*.conf' >> httpd.conf; \
  	fi
  	
+RUN mkdir /usr/local/apache2/conf.d/
+
 # Add mod_proxy conf files
-ADD proxy.conf /usr/local/apache2/conf/extra/ 
+ADD httpd-proxy.conf /usr/local/apache2/conf.d/httpd-proxy.conf
 
 EXPOSE 80
 

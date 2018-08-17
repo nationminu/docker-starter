@@ -175,8 +175,8 @@ INSERT INTO SIGNON VALUES('ACID','ACID');
 INSERT INTO ACCOUNT VALUES('j2ee','yourname@yourdomain.com','ABC', 'XYX', 'OK', '901 San Antonio Road', 'MS UCUP02-206', 'Palo Alto', 'CA', '94303', 'USA',  '555-555-5555');
 INSERT INTO ACCOUNT VALUES('ACID','acid@yourdomain.com','ABC', 'XYX', 'OK', '901 San Antonio Road', 'MS UCUP02-206', 'Palo Alto', 'CA', '94303', 'USA',  '555-555-5555');
 
-INSERT INTO profile VALUES('j2ee','english','DOGS',1,1);
-INSERT INTO profile VALUES('ACID','english','CATS',1,1);
+INSERT INTO PROFILE VALUES('j2ee','english','DOGS',1,1);
+INSERT INTO PROFILE VALUES('ACID','english','CATS',1,1);
 
 INSERT INTO BANNERDATA VALUES ('FISH','<image src="../images/banner_fish.gif">');
 INSERT INTO BANNERDATA VALUES ('CATS','<image src="../images/banner_cats.gif">');

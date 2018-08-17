@@ -9,7 +9,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - "./docker-conf/apache/proxy.conf:/usr/local/apache2/conf/extra/proxy.conf"
+      - "./docker-conf/custom-httpd/httpd-proxy.conf:/usr/local/apache2/conf.d/httpd-proxy.conf"
     networks:
       - frontend
     links:
@@ -24,10 +24,12 @@ services:
       JDBC_URL: jdbc:mariadb://mariadb:3306/jpetstore?connectTimeout=0&amp;socketTimeout=0&amp;autoReconnect=true
       JDBC_USER: jpetstore
       JDBC_PASS: jpetstore
+      JAVA_OPTS: -Xmx1024m -Xms1024m 
     networks:
       - frontend
       - backend
     volumes:
+      - "./docker-conf/custom-tomcat/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
       - "./docker-apps/webapps:/usr/local/tomcat/webapps"
     links:
       - mariadb
