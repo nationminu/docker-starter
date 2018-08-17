@@ -15,7 +15,7 @@ RUN set -ex \
 RUN mkdir -p /usr/local/apache2/conf.d/
 
 # Add mod_proxy conf files
-ADD ../../docker-conf/custom-httpd/docker-proxy.conf /usr/local/apache2/conf.d/
+ADD docker-proxy.conf /usr/local/apache2/conf.d/docker-proxy.conf
 
 EXPOSE 80
 

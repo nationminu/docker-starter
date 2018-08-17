@@ -9,7 +9,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - "./docker-conf/custom-httpd/docker-proxy.conf:/usr/local/apache2/conf.d/"
+      - "./docker-conf/custom-httpd/docker-proxy.conf:/usr/local/apache2/conf.d/docker-proxy.conf"
     networks:
       - frontend
     links:
@@ -28,7 +28,8 @@ services:
       - frontend
       - backend
     volumes:
-      - "./docker-apps/webapps:/usr/local/tomcat/webapps"
+      - "./docker-apps/webapps/sample:/usr/local/tomcat/webapps/sample"
+      - "./docker-apps/webapps/jpetstore:/usr/local/tomcat/webapps/jpetstore"
     links:
       - mariadb
       
