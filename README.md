@@ -94,8 +94,9 @@ tomcat              latest              5808f01b11bf        2 days ago          
 ### 강제 종료 
 <pre><code>]$ docker kill tomcat</code></pre>
  
-### 이미지 삭제  
-<pre><code>]$ docker rmi tomcat</code></pre>
+### 이미지 삭제  / 전체 삭
+<pre><code>]$ docker rmi tomcat
+]$ docker rmi $(docker images -q)</code></pre>
 
 ### 컨테이너 확인   
 <pre><code>]$ docker ps [-a]</code></pre> 
@@ -103,5 +104,7 @@ tomcat              latest              5808f01b11bf        2 days ago          
 ### 로그 확인 
 <pre><code>]$ docker logs [-f] [container_id]</code></pre>
 
-### 컨테이너 삭제   
-<pre><code>]$ docker rm [container_id]</code></pre>
+### 컨테이너 삭제 / 전체 삭제 
+<pre><code>]$ docker rm [container_id]
+]$ docker rm $(docker ps -a -q)
+</code></pre>
