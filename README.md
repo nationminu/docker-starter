@@ -86,7 +86,7 @@ tomcat              latest              5808f01b11bf        2 days ago          
 <pre><code>]$ docker run -d test/tomcat</code></pre>
 
 ### port 설정(8080->8080), 컨테이너 이름 설정(tomcat)
-<pre><code>]$ docker run -d -p "8080:8080" --name tomcat test/tomcat</code></pre>
+<pre><code>]$ docker run -d -p "8080:8080" --name tomcat tomcat/custom</code></pre>
 
 ### 종료 
 <pre><code>]$ docker stop tomcat</code></pre>
@@ -94,7 +94,7 @@ tomcat              latest              5808f01b11bf        2 days ago          
 ### 강제 종료 
 <pre><code>]$ docker kill tomcat</code></pre>
  
-### 이미지 삭제  / 전체 삭
+### 이미지 삭제  / 전체 삭제
 <pre><code>]$ docker rmi tomcat
 ]$ docker rmi $(docker images -q)</code></pre>
 
@@ -107,4 +107,28 @@ tomcat              latest              5808f01b11bf        2 days ago          
 ### 컨테이너 삭제 / 전체 삭제 
 <pre><code>]$ docker rm [container_id]
 ]$ docker rm $(docker ps -a -q)
+</code></pre>
+
+## 3. docker 연동 테스트
+
+> docker-build/custom-httpd , docker-build/custom-tomcat 빌드 
+
+<pre><code>
+]$ docker build -t tomcat/custom docker-build/custom-tomcat
+]$ docker build -t tomcat/httpd docker-build/custom-httpd
+</code></pre>
+
+### 2) Tomcat 실행 
+<pre><code>
+]$ docker run -d --name tomcat tomcat/custom 
+</code></pre>
+
+### 3) Apache 실행 -> 연동 테스트 
+<pre><code> 
+]$ docker run -d -p "80:80" --link tomcat httpd/custom 
+</code></pre>
+
+### 4) Apache 실행 -> 연동 테스트 
+<pre><code>
+]$ curl -v http://127.0.0.1/
 </code></pre>
