@@ -66,7 +66,7 @@ Successfully tagged tomcat/custom:latest
 ## 2. docker image 확인
 -------------
 ### Docker 이미지 확인
-<pre><code>]$ docker images</code></pre>
+<pre><code>]$ docker images [-a]</code></pre>
 
 ### Docker 이미지 확인 결과
 <pre>
@@ -77,16 +77,31 @@ tomcat              latest              5808f01b11bf        2 days ago          
 </code>
 </pre>
 
-## 3. docker 실행
+## 3. docker 실행 
 
-### Tomcat 원본 이미지 실행 
-<pre><code>]$ docker run tomcat</code></pre>
-
-### 커스텀 Tomcat forground 실행
+### Tomcat forground 실행
 <pre><code>]$ docker run test/tomcat</code></pre>
 
-### 커스텀 Tomcat background 실행 : -d optional
+### Tomcat background 실행 : -d optional
 <pre><code>]$ docker run -d test/tomcat</code></pre>
+
+### port 설정(8080->8080), 컨테이너 이름 설정(tomcat)
+<pre><code>]$ docker run -d -p "8080:8080" --name tomcat test/tomcat</code></pre>
+
+### 종료 
+<pre><code>]$ docker stop tomcat</code></pre>
+
+### 강제 종료 
+<pre><code>]$ docker kill tomcat</code></pre>
  
+### 이미지 삭제  
+<pre><code>]$ docker rmi tomcat</code></pre>
 
+### 컨테이너 확인   
+<pre><code>]$ docker ps [-a]</code></pre> 
 
+### 로그 확인 
+<pre><code>]$ docker logs [-f] [container_id]</code></pre>
+
+### 컨테이너 삭제   
+<pre><code>]$ docker rm [container_id]</code></pre>
